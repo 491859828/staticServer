@@ -17,15 +17,10 @@ var server = http.createServer(function(request, response){
   var query = parsedUrl.query
   var method = request.method
 
-  /******** 从这里开始看，上面不要看 ************/
-
   console.log('有个傻子发请求过来啦！路径（带查询参数）为：' + pathWithQuery)
-
   response.statusCode = 200
-  // 默认首页
   const filePath = path === '/' ? '/index.html' : path
   const index = filePath.lastIndexOf('.')
-  // suffix 是后缀
   const suffix = filePath.substring(index)
   const fileTypes = {
     '.html':'text/html',
@@ -45,8 +40,6 @@ var server = http.createServer(function(request, response){
   }
   response.write(content)
   response.end()
-
-  /******** 代码结束，下面不要看 ************/
 })
 
 server.listen(port)
